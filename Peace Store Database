@@ -22,10 +22,10 @@ INSERT INTO inventory VALUES (15, "PURE Bubble Coat", "S-XL", "84", "27", "5.5",
 SELECT * FROM inventory 
 ORDER BY price ASC;
 
-/* What is the minimum purchase price based on the amount of inventory per item? */
-SELECT MIN(price) 
+/* What is the total price of all items with more than 20 pieces in stock? */
+SELECT SUM(price) 
 FROM inventory 
-GROUP BY quantity;
+WHERE quantity > 20;
 
 /* What are the Top 3 ranked clothing items? */
 SELECT name, price, rating 
