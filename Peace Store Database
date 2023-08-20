@@ -1,0 +1,37 @@
+-- Create a Store Database --
+
+CREATE TABLE inventory (id INTEGER PRIMARY KEY, name TEXT, size TEXT, price INTEGER, quantity INTEGER, rating NUMERIC, zone INTEGER );
+
+INSERT INTO inventory VALUES (1, "PURE Shirt Men", "L", "20", "8", "5.5", "1");
+INSERT INTO inventory VALUES (2, "PURE Zip-Up Jacket", "M", "45", "10", "4.3", "1");
+INSERT INTO inventory VALUES (3, "PURE Racerback Tank", "M", "12", "12", "2.6", "3");
+INSERT INTO inventory VALUES (4, "PMF Tank Top Adult", "S", "10", "2", "4.6", "2");
+INSERT INTO inventory VALUES (5, "PMF Rain Jacket Youth", "L", "32", "12", "5", "1");
+INSERT INTO inventory VALUES (6, "PMF Crop Top", "S", "15", "9", "4.4", "2");
+INSERT INTO inventory VALUES (7, "PURE Men Joggers", "M", "45", "6", "4.8", "1");
+INSERT INTO inventory VALUES (8, "PURE Woman Shorts", "S", "23", "5", "3.3", "2");
+INSERT INTO inventory VALUES (9, "PURE Bucket Hat", "S-XL", "17", "7", "4.2", "4");
+INSERT INTO inventory VALUES (10, "PURE Baseball Cap", "L", "13", "10", "5", "4");
+INSERT INTO inventory VALUES (11, "PMF Hoodie Men", "XL", "55", "3", "4.9", "1");
+INSERT INTO inventory VALUES (12, "PMF Sweatshirt Woman", "XS", "38", "13", "5", "2");
+INSERT INTO inventory VALUES (13, "PMF LS Crewneck", "L", "28", "23", "4.5", "3");
+INSERT INTO inventory VALUES (14, "PURE Slouch Socks", "S-XL", "14", "9", "3.9", "4");
+INSERT INTO inventory VALUES (15, "PURE Bubble Coat", "S-XL", "84", "27", "5.5", "3");
+
+/* Display the database ordered by price. */
+SELECT * FROM inventory 
+ORDER BY price ASC;
+
+/* What is the minimum purchase price based on the amount of inventory per item? */
+SELECT MIN(price) 
+FROM inventory 
+GROUP BY quantity;
+
+/* What are the Top 3 ranked clothing items? */
+SELECT name, price, rating 
+FROM inventory 
+ORDER BY rating DESC
+LIMIT 3;
+
+
+

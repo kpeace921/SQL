@@ -1,3 +1,0 @@
-CREATE TABLE inventory (id INTEGER PRIMARY KEY, name TEXT, size TEXT, price INTEGER, quantity INTEGER, rating NUMERIC, zone INTEGER );
-
-Review PMF LLC's store database here. First I created a store database, then displayed the database ordered by size, price, quantity, rating, and clothing zone.
