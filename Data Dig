@@ -1,0 +1,56 @@
+-- Digging for Data --
+
+CREATE TABLE card_games (id INTEGER PRIMARY KEY,
+    date_played TEXT,
+    game_name TEXT,
+    player_name TEXT,
+    score INTEGER );
+
+INSERT INTO card_games (date_played, game_name, player_name, score) VALUES ('2015/01/07','Rummy','Winston',523);
+INSERT INTO card_games (date_played, game_name, player_name, score) VALUES ('2015/01/07','Rummy','Hopper',311);
+INSERT INTO card_games (date_played, game_name, player_name, score) VALUES ('2015/03/11','Pitch','Hopper',22);
+INSERT INTO card_games (date_played, game_name, player_name, score) VALUES ('2015/03/18','Crazy Eights','Amelia',174);
+INSERT INTO card_games (date_played, game_name, player_name, score) VALUES ('2015/03/18','Crazy Eights','Mr. Pink',216);
+INSERT INTO card_games (date_played, game_name, player_name, score) VALUES ('2015/01/21','Rummy','Hopper',516);
+INSERT INTO card_games (date_played, game_name, player_name, score) VALUES ('2015/02/04','Go Fish','Winston',12);
+INSERT INTO card_games (date_played, game_name, player_name, score) VALUES ('2015/02/04','Go Fish','Hopper',0);
+INSERT INTO card_games (date_played, game_name, player_name, score) VALUES ('2015/01/28','Crazy Eights','Spunky Sam',119);
+INSERT INTO card_games (date_played, game_name, player_name, score) VALUES ('2015/02/04','Pitch','Winston',-3);
+INSERT INTO card_games (date_played, game_name, player_name, score) VALUES ('2015/02/04','Pitch','Hopper',9);
+INSERT INTO card_games (date_played, game_name, player_name, score) VALUES ('2015/03/25','Rummy','Winston',397);
+INSERT INTO card_games (date_played, game_name, player_name, score) VALUES ('2015/03/25','Rummy','Hopper',443);
+INSERT INTO card_games (date_played, game_name, player_name, score) VALUES ('2015/02/04','Go Fish','Spunky Sam',3);
+INSERT INTO card_games (date_played, game_name, player_name, score) VALUES ('2015/02/04','Go Fish','Marcimus',11);
+INSERT INTO card_games (date_played, game_name, player_name, score) VALUES ('2015/01/14','Go Fish','Winston',4);
+INSERT INTO card_games (date_played, game_name, player_name, score) VALUES ('2015/01/14','Go Fish','Hopper',10);
+INSERT INTO card_games (date_played, game_name, player_name, score) VALUES ('2015/01/14','Crazy Eights','Spunky Sam',215);
+INSERT INTO card_games (date_played, game_name, player_name, score) VALUES ('2015/02/11','Rummy','Amelia',525);
+INSERT INTO card_games (date_played, game_name, player_name, score) VALUES ('2015/03/11','Pitch','Winston',7);
+
+/* From the data set, what is the average score? On what date was the played? */
+SELECT date_played, AVG(score) FROM card_games;
+
+/* Who is the most popular player? */
+SELECT MAX(player_name) FROM card_games;
+
+/* Display the data that shows all card games played, by which players, with a score above 10 */
+SELECT game_name, player_name, score
+FROM card_games
+WHERE score>10
+GROUP BY score 
+HAVING date_played<"2015/02/11";
+
+/* What ways are there to group the data values that don’t exist yet (using CASE)? */
+SELECT score, player_name, CASE
+WHEN score > 400 THEN "high"
+WHEN score > 100 THEN "medium"
+ELSE "low"
+END "game rankings"
+FROM card_games
+ORDER BY score;
+
+/* What interesting ways are there to filter the data (using AND/OR)? */
+SELECT game_name
+FROM card_games
+WHERE date_played = "2015/02/04" OR score > 540
+ORDER BY score;
